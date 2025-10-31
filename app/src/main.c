@@ -60,7 +60,8 @@ int main(void)
 	prv_cfg_led(&led1);
 
 	char a[10];
-	a[10] = 0 / 0;
+	a[10] = 100;
+	a[9] = 1 / 0;
 	return 0;
 
 	while (1) {
