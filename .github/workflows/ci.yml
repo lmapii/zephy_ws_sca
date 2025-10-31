@@ -78,6 +78,8 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
+          # the projectBaseDir only seems to give the location of the
+          # sonar-project.properties, but is not the working directory.
           projectBaseDir: dev
           args: >
-            --define "sonar.cfamily.compile-commands=build/compile_commands.json"
+            --define "sonar.cfamily.compile-commands=dev/build/compile_commands.json"
