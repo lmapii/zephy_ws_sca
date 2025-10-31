@@ -1,0 +1,43 @@
+# borrowed from https://github.com/IRNAS/irnas-zephyr-template/blob/main/.clang-tidy
+
+Checks: |
+  *
+  -altera-*
+  -android-*
+  -abseil-*
+  -cppcoreguidelines-*
+  -hicpp-*
+  -modernize-*
+  -llvmlibc-restrict-system-libc-headers
+  -readability-identifier-length
+  -readability-function-size
+  -readability-magic-numbers
+  -google-readability-function-size
+  -google-readability-todo
+  -bugprone-easily-swappable-parameters
+  -bugprone-branch-clone
+  -llvm-include-order
+  -llvm-header-guard
+  -misc-redundant-expression
+
+WarningsAsErrors: ""
+HeaderFilterRegex: "-zephyr.h,-logging/log.h"
+AnalyzeTemporaryDtors: false
+FormatStyle: file
+CheckOptions:
+  - key: readability-function-cognitive-complexity.IgnoreMacros
+    value: True
+  - key: readability-identifier-naming.FunctionCase
+    value: lower_case
+  - key: readability-identifier-naming.StructCase
+    value: lower_case
+  - key: readability-identifier-naming.ClassCase
+    value: lower_case
+  - key: readability-identifier-naming.TypedefCase
+    value: lower_case
+  - key: readability-identifier-naming.MemberCase
+    value: lower_case
+  - key: readability-identifier-naming.EnumCase
+    value: lower_case
+  - key: readability-identifier-naming.EnumConstant
+    value: UPPER_CASE

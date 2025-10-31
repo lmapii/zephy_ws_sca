@@ -1,0 +1,31 @@
+/ {
+  chosen {
+  };
+
+  buttons: buttons {
+    compatible = "gpio-keys";
+    button0: button_0 {
+      gpios = <&gpio0 11 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+      label = "momentary push-button switch 0";
+      zephyr,code = <INPUT_KEY_0>;
+    };
+    button1: button_1 {
+      gpios = <&gpio0 12 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+      label = "momentary push-button switch 1";
+      zephyr,code = <INPUT_KEY_1>;
+    };
+    button2: button_2 {
+			gpios = <&gpio0 24 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+			label = "momentary push-button switch 2";
+			zephyr,code = < 0x3 >;
+		};
+
+    /*
+     * We can't delete nodes we can only delete properties.
+     * We can, however, set the status of a node to 'disabled' such that it isn't used by a driver.
+     */
+		button3: button_3 {
+      status = "disabled";
+		};
+  };
+};

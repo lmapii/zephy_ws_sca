@@ -1,0 +1,27 @@
+manifest:
+  version: 1.2
+
+  self:
+    path: dev
+
+  projects:
+    # the name of the sdk-nrf MUST be `nrf` since nordic has some relative paths set up
+    # using `${ZEPHYR_BASE}/../nrf`
+    - name: nrf
+      # this is the sdk-nrf version, not the Zephyr version
+      revision: v3.1.1
+      url: https://github.com/nrfconnect/sdk-nrf
+      west-commands: scripts/west-commands.yml
+      import:
+        path-prefix: deps
+        file: west.yml
+        name-allowlist:
+          # basics
+          - cmsis
+          - cmsis_6
+          - hal_nordic
+          - nrfxlib
+          - nrf_hw_models
+          - segger
+          - zephyr
+          - lvgl

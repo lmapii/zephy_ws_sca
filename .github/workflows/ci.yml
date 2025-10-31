@@ -1,0 +1,49 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches:
+    - main
+  schedule:
+    - cron: '0 1 * * 0'
+
+jobs:
+
+  #
+  # build job using an sdk-nrf west configuration
+  #
+
+  build-sdk-nrf:
+    # build using sdk-nrf, which includes zephyr as project.
+    runs-on: ubuntu-22.04
+    container: ghcr.io/zephyrproject-rtos/ci:v0.28.6
+    env:
+      CMAKE_PREFIX_PATH: /opt/toolchains
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: dev
+
+      - name: Initialize workspace
+        working-directory: dev
+        run: |
+          west init --local --mf west-sdk-nrf.yml .
+
+      - name: Cache dependencies
+        id: cache-sdk-nrf
+        uses: actions/cache@v4
+        with:
+          path: deps
+          key: cache-sdk-nrf-${{ hashFiles('dev/west-sdk-nrf.yml') }}
+
+      - name: Update workspace
+        working-directory: dev
+        run: |
+          west update -o=--depth=1 -n
+
+      - name: Build for nRF52840 development kit
+        working-directory: dev
+        run: |
+          west build --board nrf52840dk_nrf52840 --pristine
