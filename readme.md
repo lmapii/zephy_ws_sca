@@ -17,5 +17,5 @@ $ source .venv/bin/activate
 Setup your SDK, then
 
 ```bash
-(.venv) $ west build --no-sysbuild --board nrf52840dk/nrf52840 dev/app --pristine
+(.venv) $ west build --no-sysbuild --board nrf52840dk/nrf52840 app --pristine
 ```

@@ -17,7 +17,9 @@ jobs:
   build-sdk-nrf:
     # build using sdk-nrf, which includes zephyr as project.
     runs-on: ubuntu-22.04
-    container: ghcr.io/zephyrproject-rtos/ci:v0.28.6
+    # the image size of ci:v0.28.6 exceeds the limits used by GitHub actions
+    container:
+      image: ghcr.io/zephyrproject-rtos/ci-base:v0.28.6
     env:
       CMAKE_PREFIX_PATH: /opt/toolchains
     steps:
@@ -43,7 +45,12 @@ jobs:
         run: |
           west update -o=--depth=1 -n
 
-      - name: Build for nRF52840 development kit
+      - name: Install SDK
+        working-directory: deps/zephyr
+        run: |
+          west sdk install --toolchains arm-zephyr-eabi --no-hosttools
+
+      - name: Build 'app' for the nRF52840 development kit
         working-directory: dev
         run: |
-          west build --board nrf52840dk_nrf52840 --pristine
+          west build --no-sysbuild --board nrf52840dk/nrf52840 app --pristine
