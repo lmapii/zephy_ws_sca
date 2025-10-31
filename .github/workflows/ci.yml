@@ -78,5 +78,6 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
+          projectBaseDir: dev
           args: >
-            --define "sonar.cfamily.compile-commands=dev/build/compile_commands.json"
+            --define "sonar.cfamily.compile-commands=build/compile_commands.json"
