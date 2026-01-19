@@ -10,6 +10,7 @@ project(
 target_sources(
     app
     PRIVATE
-    src/dummy.c
+    src/foo.c
+    src/bar.c
     src/main.c
 )
