@@ -1,6 +1,6 @@
 /*
- * In contrast to `foo.c` this include file is analyzed correctly since
- * it doesn't have any (problematic) includes.
+ * In contrast to `foo.c` this file does not include
+ * the sometimes problematic `<zephyr/kernel.h>`.
  */
 // #include <zephyr/kernel.h>
 

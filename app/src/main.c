@@ -63,7 +63,7 @@ int main(void)
 	prv_cfg_led(&led0);
 	prv_cfg_led(&led1);
 
-    return foo() + bar(-1) + baz(-2);
+	return foo() + bar(-1) + baz(-2);
 
 	while (1)
 	{

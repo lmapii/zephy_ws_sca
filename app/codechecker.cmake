@@ -9,9 +9,8 @@ set(
 
 set(
     CODECHECKER_ANALYZE_OPTS
-    "--config" "${CMAKE_CURRENT_LIST_DIR}/codechecker.yaml"
-    "--analyzer-config" "cppcheck:cc-verbatim-args-file=${CMAKE_BINARY_DIR}/sca/cppcheck/cc-verbatim-args.txt"
-    "--skip" "${CMAKE_CURRENT_LIST_DIR}/codechecker.skip"
+    "--analyzer-config;cppcheck:cc-verbatim-args-file=${CMAKE_BINARY_DIR}/sca/cppcheck/cc-verbatim-args.txt;"
+    "--skip;${CMAKE_CURRENT_LIST_DIR}/codechecker.skip"
     CACHE STRING
     "CodeChecker analyzer options"
 )

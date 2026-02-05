@@ -12,6 +12,9 @@ analyzer:
   - cppcheck
   # don't use incremental updates, clean the SCA reports on each execution
   - --clean
+  # this is a new flag in CodeChecker 6.24 and above and required if reports for includes
+  # from files in the skiplist should be filtered from the analysis result.
+  - --drop-reports-from-skipped-files
 
 parse:
   - --trim-path-prefix=/*/dev
