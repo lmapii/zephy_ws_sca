@@ -1,0 +1,9 @@
+# https://github.com/Ericsson/codechecker/blob/master/docs/analyzer/user_guide.md#skip-file
+# only test application, library, drivers, and test files (even if they don't exist).
+-*/deps/*
++*/dev/app*
++*/dev/drivers*
++*/dev/lib*
++*/dev/tests/*
+# skip everything else
+-*

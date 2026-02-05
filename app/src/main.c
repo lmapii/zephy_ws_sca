@@ -14,6 +14,10 @@ LOG_MODULE_DECLARE(app, LOG_LEVEL_DBG);
 
 static void prv_input_cb_all(struct input_event *evt, void *user_data);
 
+int foo(void);
+int bar(int arg);
+int baz(int arg);
+
 /***************************************************************************************************
  * Data
  **************************************************************************************************/
@@ -59,12 +63,10 @@ int main(void)
 	prv_cfg_led(&led0);
 	prv_cfg_led(&led1);
 
-	char a[10];
-	a[10] = 100;
-	a[9] = 1 / 0;
-	return 0;
+	return foo() + bar(-1) + baz(-2);
 
-	while (1) {
+	while (1)
+	{
 		k_msleep(SLEEP_TIME_MS);
 	}
 }
