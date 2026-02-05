@@ -15,8 +15,8 @@ LOG_MODULE_DECLARE(app, LOG_LEVEL_DBG);
 static void prv_input_cb_all(struct input_event *evt, void *user_data);
 
 int foo(void);
-
 int bar(int arg);
+int baz(int arg);
 
 /***************************************************************************************************
  * Data
@@ -63,7 +63,7 @@ int main(void)
 	prv_cfg_led(&led0);
 	prv_cfg_led(&led1);
 
-    return foo() + bar(-1);
+    return foo() + bar(-1) + baz(-2);
 
 	while (1)
 	{

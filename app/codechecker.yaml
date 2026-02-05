@@ -1,0 +1,18 @@
+
+analyzer:
+  # enable all tests with the given "profile:<text>" label
+  - --enable=default
+  # enable tests with the given label "<text>"
+  - --enable=severity:STYLE
+  - --enable=severity:MEDIUM
+  - --enable=severity:HIGH
+  # don't complain about missing system includes like `<stddef.h>`
+  - --disable=cppcheck-missingIncludeSystem
+  - --analyzers
+  - cppcheck
+  # don't use incremental updates, clean the SCA reports on each execution
+  - --clean
+
+parse:
+  - --trim-path-prefix=/*/dev
+  - --print-steps

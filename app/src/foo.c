@@ -1,8 +1,8 @@
 /*
  * We're perfectly aware that the `zephyr/kernel.h` is not needed by this unit.
- * This include has been added for demonstration purposes since some static
- * analysis tools, e.g., `cppcheck` currently struggle with `zephyr/kernel.h`,
- * resulting in incomplete analysis reports.
+ * This include has been added for demonstration purposes - `cppcheck` currently
+ * doesn't for any unit that includes `zephyr/kernel.h` since in simple words
+ * it cannot resolve some macros and _Kconfig_ options.
  *
  * See https://github.com/zephyrproject-rtos/zephyr/issues/68946
  */
